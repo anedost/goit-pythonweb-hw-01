@@ -1,11 +1,6 @@
 from abc import abstractmethod, ABC
-import logging
 
-logging.basicConfig(
-    format="%(levelname)s %(message)s",
-    level=logging.INFO,
-    handlers=[logging.StreamHandler()],
-)
+from logger import Logger
 
 
 class Vehicle(ABC):
@@ -20,7 +15,7 @@ class Car(Vehicle):
         self.model = model
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model}: Двигун запущено")
+        Logger.log(f"{self.make} {self.model}: Двигун запущено")
 
 
 class Motorcycle(Vehicle):
@@ -29,7 +24,7 @@ class Motorcycle(Vehicle):
         self.model = model
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model}: Мотор заведено")
+        Logger.log(f"{self.make} {self.model}: Мотор заведено")
 
 
 class USCar(Car):
@@ -38,7 +33,7 @@ class USCar(Car):
         self.spec = "US"
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model} ({self.spec} spec): Двигун запущено")
+        Logger.log(f"{self.make} {self.model} ({self.spec} spec): Двигун запущено")
 
 
 class EUCar(Car):
@@ -47,7 +42,7 @@ class EUCar(Car):
         self.spec = "EU"
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model} ({self.spec} spec): Двигун запущено")
+        Logger.log(f"{self.make} {self.model} ({self.spec} spec): Двигун запущено")
 
 
 class USMotorcycle(Motorcycle):
@@ -56,7 +51,7 @@ class USMotorcycle(Motorcycle):
         self.spec = "US"
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model} ({self.spec} spec): Мотор заведено")
+        Logger.log(f"{self.make} {self.model} ({self.spec} spec): Мотор заведено")
 
 
 class EUMotorcycle(Motorcycle):
@@ -65,7 +60,7 @@ class EUMotorcycle(Motorcycle):
         self.spec = "EU"
 
     def start_engine(self):
-        logging.info(f"{self.make} {self.model} ({self.spec} spec): Мотор заведено")
+        Logger.log(f"{self.make} {self.model} ({self.spec} spec): Мотор заведено")
 
 
 class VehicleFactory(ABC):

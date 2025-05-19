@@ -1,11 +1,6 @@
 from abc import ABC, abstractmethod
-import logging
 
-logging.basicConfig(
-    format="%(levelname)s %(message)s",
-    level=logging.INFO,
-    handlers=[logging.StreamHandler()],
-)
+from logger import Logger
 
 
 class Book:
@@ -15,7 +10,7 @@ class Book:
         self.year = year
 
     def show(self):
-        logging.info(f"Title: {self.title}, Author: {self.author}, Year: {self.year}")
+        Logger.log(f"Title: {self.title}, Author: {self.author}, Year: {self.year}")
 
 
 class LibraryInterface(ABC):
@@ -86,7 +81,7 @@ def main():
             case "exit":
                 break
             case _:
-                logging.info("Invalid command. Please try again.")
+                Logger.log("Invalid command. Please try again.")
 
 
 if __name__ == "__main__":
